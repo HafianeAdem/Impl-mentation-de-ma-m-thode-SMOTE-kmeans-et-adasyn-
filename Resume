@@ -1,0 +1,29 @@
+Les données déséquilibrées (imbalanced data) sont un problème fréquemment rencontré dans les modèles de classification, qu’il s’agisse de classification binaire 
+(ex : détecter une maladie) ou de classification multi-classes (ex : prédire le modèle de voiture acheté). 
+On peut parler de données déséquilibrées dès lors que les deux classes ne sont pas présentes avec la même fréquence dans les données, i.e. que le ratio n’est pas 50%/50%.
+
+En pratique on ne parle de données déséquilibrées qu’à partir du moment où le déséquilibre dépasse 10%/90%. 
+Par exemple, dans le cas d’une détection de fraude, il se peut que 99.9% des transactions effectuées soient valides, et seulement 0.1% frauduleuses. 
+Les transactions valides sont alors appelées la classe majoritaire, et les fraudes la classe minoritaire.
+
+Dans un problème de classification déséquilibré, la classe minoritaire est généralement la plus intéressante.
+Car c’est la classe qui possède le moins d’exemples contrairement à la classe majoritaire d’où son nom, qui a le plus d’exemples.
+
+Les méthodes d’Oversampling fonctionnent en augmentant le nombre d’observations de la (des) classe(s) minoritaire(s) aléatoirement afin d’arriver à un ratio classe minoritaire/ classe majoritaire satisfaisant.
+
+Synthetic Minority Oversampling Technique=SMOTE
+
+SMOTE fonctionne en générant de nouvelles instances à partir de cas minoritaires existants que vous fournissez en entrée. 
+Cette implémentation de SMOTE ne change pas le nombre de cas majoritaires. 
+Les nouvelles instances ne sont pas simplement des copies des affaires minoritaires existantes. 
+Au lieu de cela, l'algorithme prend des échantillons de l’espace des caractéristiques pour chaque classe cible et ses voisins les plus proches. 
+L'algorithme génère ensuite de nouveaux exemples qui combinent les caractéristiques du cas cible avec les caractéristiques de ses voisins. 
+Cette approche augmente les fonctionnalités disponibles pour chaque classe et rend les exemples plus généraux. 
+SMOTE prend l'intégralité de l'ensemble de données en entrée, mais il n'augmente que le pourcentage des cas minoritaires. 
+Par exemple, supposons que vous ayez un ensemble de données déséquilibré où seulement 1 % des cas ont la valeur cible A (la classe minoritaire) et 99 % des cas ont la valeur B.
+
+* Notre méthode d'oversampling proposée est réalisé suite aux résultats de clustering (K-means et
+DBSCAN) qui nous donne des clusters.
+Ensuite, on a proposé deux méthodes pour augmenter notre classe minoritaire qui est construite des clusters de la phase précédente.
+La première, consiste à augmenter (avec SMOTE et ADASYN) les clusters dont le taux de distribution dans la classe minoritaire est supérieur au (nombre de clusters / 100)
+La deuxième, consiste à augmenter tous les clusters de la classe minoritaire par le pourcentage de leurs distributions dans la classe minoritaire.
